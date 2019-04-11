@@ -7,17 +7,13 @@ for (let v of obj) {
   let newBoundary = []
   for (let str of v.boundary) { // str 为经纬度数组集合
     let llArr = str.split(";");
-    let count = 1;let newLl = [];let newLlArr = []
+    let newLlArr = []
     for (let llstr of llArr) { // ll 为一组经度或纬度string
       let ll = llstr.split(",")
-      if(count === 1){
-        newLl[1] = ll[0]
-        count = 2
-      }else{
-        newLl[0] = ll[1]
-        newLlArr.push(newLl)
-        count = 1
-      }
+      let newLl = [];
+      newLl[1] = ll[0]
+      newLl[0] = ll[1]
+      newLlArr.push(newLl)
     }
     newBoundary = newBoundary.concat(newLlArr)
   }
